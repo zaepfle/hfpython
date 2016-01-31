@@ -26,9 +26,9 @@ except IOError:
     print('Datei nicht auffindbar!')
 
 try:
-    while open('mann_datei.txt', 'w') as mann_datei:
+    with open('mann_datei.txt', 'w') as mann_datei:
         print(mann, file=mann_datei)
-    while open('anderer_datei.txt', 'w') as anderer_datei:
+    with open('anderer_datei.txt', 'w') as anderer_datei:
         print(anderer, file=anderer_datei)
 except IOError as err:
     print('Dateifehler: ' + str(err))
