@@ -1,6 +1,4 @@
-import os
-
-#os.chdir('/Users/kaiwork/Documents/python/hfpython_code/kapitel3')
+from denester import printnl
 
 mann = []
 anderer = []
@@ -15,9 +13,6 @@ try:
                 mann.append(aussage)
             elif rolle == 'Other Man':
                 anderer.append(aussage)
-##            print(rolle, end='')
-##            print(' sagte: ', end='')
-##            print(aussage, end='')
         except ValueError:
             pass
 
@@ -26,9 +21,9 @@ except IOError:
     print('Datei nicht auffindbar!')
 
 try:
-    while open('mann_datei.txt', 'w') as mann_datei:
-        print(mann, file=mann_datei)
-    while open('anderer_datei.txt', 'w') as anderer_datei:
-        print(anderer, file=anderer_datei)
+    with open('mann_datei.txt', 'w') as mann_datei:
+        printnl(mann, output=mann_datei)
+    with open('anderer_datei.txt', 'w') as anderer_datei:
+        printnl(anderer, output=anderer_datei)
 except IOError as err:
     print('Dateifehler: ' + str(err))
